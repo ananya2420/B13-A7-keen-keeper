@@ -1,8 +1,13 @@
 import { createBrowserRouter } from "react-router";
 import MainLayout from "../layout/MainLayout";
-import HomePage from "../pages/homepage/HomePage";
-import Keens from "../pages/keens/Keens";
 import ErrorPage from "../pages/error/ErrorPage";
+
+import HomePage from "../components/homepage/HomePage";
+import Keepers from "../pages/keepers/Keepers";
+import KeeperDetails from "../pages/keeperDetails/KeeperDetails";
+
+
+
 
 
 
@@ -17,7 +22,12 @@ export const router=createBrowserRouter([
     },
     {
       path:"/keens",
-      element:<Keens />
+      element:<Keepers />
+    },
+    {
+      path:"/keeperDetails/:keeperId",
+      Component: KeeperDetails,
+      loader: ()=>fetch("/friendsData.json")
     }
   ],
   errorElement:<ErrorPage />
