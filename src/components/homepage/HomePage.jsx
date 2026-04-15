@@ -3,8 +3,11 @@ import Banner from './banner/Banner'
 import Card from './card/Card'
 import Footer from './footer/Footer'
 import AllKeepers from './AllKeepers'
+//import { keeperContext } from '../../context/keeperContext'
 
 const HomePage = () => {
+
+   
   return (
     <div>
         <Banner />
