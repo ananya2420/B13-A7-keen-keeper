@@ -1,39 +1,26 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { keeperContext } from "../../context/keeperContext";
-import KeeperCard from "../ui/KeeperCard";
+import textIcon from "../../assets/text.png";
 
 const ListedTextList = ({ sortingType }) => {
   const { textList } = useContext(keeperContext);
 
-   if(textList.length===0){
-    return <div className="h-[50vh] bg-gray-100 flex item-center justify-center">
-      <h2 className="font-bold text-3xl">No text list data found</h2>
-    </div>
-   }
+  let list = textList;
 
-  const [filteredTextList, setFilteredTextList] = useState([]);
-
-  useEffect(() => {
-    let data = [...(textList || [])];
-
-    if (sortingType === "text") {
-      data.sort(
-        (a, b) => a.days_since_contact - b.days_since_contact
-      );
-    } else if (sortingType === "rating") {
-      data.sort((a, b) => (b.rating || 0) - (a.rating || 0));
-    }
-
-    setFilteredTextList(data);
-  }, [sortingType, textList]);
+  if (sortingType && sortingType !== "text") {
+    list = [];
+  }
 
   return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {filteredTextList.map((keeper) => (
-          <KeeperCard key={keeper.id} keeper={keeper} />
-        ))}
-      </div>
+    <div className="flex flex-col gap-3">
+      {list.map((item, index) => (
+        <div key={index} className="flex items-center gap-3 p-3 bg-white shadow rounded-lg">
+          <img src={textIcon} className="w-6 h-6" />
+          <span>
+            {item.name} — {item.date}
+          </span>
+        </div>
+      ))}
     </div>
   );
 };

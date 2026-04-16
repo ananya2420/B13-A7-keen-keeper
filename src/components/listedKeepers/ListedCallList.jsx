@@ -1,33 +1,33 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { keeperContext } from "../../context/keeperContext";
-import KeeperCard from "../ui/KeeperCard";
+
+// 🖼️ import your PNG
+import callIcon from "../../assets/call.png";
 
 const ListedCallList = ({ sortingType }) => {
   const { storeKeeper } = useContext(keeperContext);
 
-  const [filteredCallList, setFilteredCallList] = useState([]);
+  let list = storeKeeper;
 
-  useEffect(() => {
-    let data = [...(storeKeeper || [])];
-
-    if (sortingType === "call") {
-      data.sort(
-        (a, b) => a.days_since_contact - b.days_since_contact
-      );
-    } else if (sortingType === "rating") {
-      data.sort((a, b) => (b.rating || 0) - (a.rating || 0));
-    }
-
-    setFilteredCallList(data);
-  }, [sortingType, storeKeeper]); 
+  // filter
+  if (sortingType && sortingType !== "call") {
+    list = [];
+  }
 
   return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {filteredCallList.map((keeper) => (
-          <KeeperCard key={keeper.id} keeper={keeper} />
-        ))}
-      </div>
+    <div className="flex flex-col gap-3">
+      {list.map((item, index) => (
+        <div
+          key={index}
+          className="flex items-center gap-3 p-3 bg-white shadow rounded-lg"
+        >
+          <img src={callIcon} className="w-6 h-6" />
+
+          <span>
+            {item.name} — {item.date}
+          </span>
+        </div>
+      ))}
     </div>
   );
 };

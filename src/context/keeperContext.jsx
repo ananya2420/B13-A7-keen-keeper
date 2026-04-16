@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 import { toast } from "react-toastify";
 
-// ✅ IMPORT THESE (you forgot this)
+
 import {
   addCallListToLocalDB,
   addTextListToLocalDB,
@@ -15,32 +15,38 @@ const KeeperProvider = ({ children }) => {
   const [textList, setTextList] = useState([]);
   const [videoEditing, setVideoEditing] = useState([]);
 
-  const handleMarkAsCall = (currentKeeper) => {
-    console.log("CALL CLICKED"); // debug
-
-    addCallListToLocalDB(currentKeeper);
-    setStoreKeeper((prev) => [...prev, currentKeeper]);
-
-    toast.success(`${currentKeeper.name} added to call list`);
+ const handleMarkAsCall = (currentKeeper) => {
+  const newItem = {
+    ...currentKeeper,
+    type: "call",
+    date: new Date().toISOString(),
   };
+
+  setStoreKeeper(prev => [...prev, newItem]);
+  toast.success(`${currentKeeper.name} added to call list`);
+};
 
   const handleMarkAsText = (currentKeeper) => {
-    console.log("TEXT CLICKED");
-
-    addTextListToLocalDB(currentKeeper);
-    setTextList((prev) => [...prev, currentKeeper]);
-
-    toast.success(`${currentKeeper.name} added to text list`);
+  const newItem = {
+    ...currentKeeper,
+    type: "text",
+    date: new Date().toISOString(),
   };
+
+  setTextList(prev => [...prev, newItem]);
+  toast.success(`${currentKeeper.name} added to text list`);
+};
 
   const handleMarkAsVideo = (currentKeeper) => {
-    console.log("VIDEO CLICKED");
-
-    addVideoListToLocalDB(currentKeeper);
-    setVideoEditing((prev) => [...prev, currentKeeper]);
-
-    toast.success(`${currentKeeper.name} added to video list`);
+  const newItem = {
+    ...currentKeeper,
+    type: "video",
+    date: new Date().toISOString(),
   };
+
+  setVideoEditing(prev => [...prev, newItem]);
+  toast.success(`${currentKeeper.name} added to video list`);
+};
 
   const data = {
     storeKeeper,

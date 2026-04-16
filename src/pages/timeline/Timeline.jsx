@@ -32,22 +32,14 @@ const Timeline = () => {
 
      </div>
       <Tabs>
-    <TabList>
-      <Tab>Call</Tab>
-      <Tab>Text</Tab>
-      <Tab>Video</Tab>
-    </TabList>
+  
 
-    <TabPanel>
-      <h2><ListedCallList sortingType={sortingType} /></h2>
-    </TabPanel>
-    <TabPanel>
-      <h2><ListedTextList sortingType={sortingType} /> </h2>
-    </TabPanel>
-    <TabPanel>
-      <h2><ListedVideoList sortingType={sortingType} /></h2>
-    </TabPanel>
-  </Tabs>
+  <div className="flex flex-col gap-4">
+  <ListedCallList sortingType={sortingType} />
+  <ListedTextList sortingType={sortingType} />
+  <ListedVideoList sortingType={sortingType} />
+</div>
+  </Tabs> 
     </div>
   )
 }
