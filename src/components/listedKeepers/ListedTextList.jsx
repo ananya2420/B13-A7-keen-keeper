@@ -5,6 +5,12 @@ import KeeperCard from "../ui/KeeperCard";
 const ListedTextList = ({ sortingType }) => {
   const { textList } = useContext(keeperContext);
 
+   if(textList.length===0){
+    return <div className="h-[50vh] bg-gray-100 flex item-center justify-center">
+      <h2 className="font-bold text-3xl">No text list data found</h2>
+    </div>
+   }
+
   const [filteredTextList, setFilteredTextList] = useState([]);
 
   useEffect(() => {

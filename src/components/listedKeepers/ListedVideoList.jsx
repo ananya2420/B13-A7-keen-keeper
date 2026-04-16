@@ -5,6 +5,12 @@ import KeeperCard from "../ui/KeeperCard";
 const ListedVideoList = ({ sortingType }) => {
   const { videoEditing } = useContext(keeperContext);
 
+   if(videoEditing.length===0){
+    return <div className="h-[50vh] bg-gray-100 flex item-center justify-center">
+      <h2 className="font-bold text-3xl">No video list data found</h2>
+    </div>
+   }
+
   const [filteredVideoList, setFilteredVideoList] = useState([]);
 
   useEffect(() => {
