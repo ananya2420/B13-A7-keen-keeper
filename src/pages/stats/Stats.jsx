@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { keeperContext } from "../../context/keeperContext";
 import {
   PieChart,
   Pie,
@@ -8,23 +9,31 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  { name: "Text", value: 45 },
-  { name: "Call", value: 25 },
-  { name: "Video", value: 30 },
-];
-
-const COLORS = ["#8B5CF6", "#10B981", "#F59E0B"]; 
+const COLORS = ["#10B981", "#8B5CF6", "#F59E0B"];
 
 const Stats = () => {
+  const { storeKeeper, textList, videoEditing } =
+    useContext(keeperContext);
+
+  // ✅ COUNT FROM REAL DATA
+  const callCount = storeKeeper.length;
+  const textCount = textList.length;
+  const videoCount = videoEditing.length;
+
+  const data = [
+    { name: "Call", value: callCount },
+    { name: "Text", value: textCount },
+    { name: "Video", value: videoCount },
+  ];
+
   return (
     <div className="p-6">
-      {/* Page Heading */}
+      {/* Heading */}
       <h1 className="text-2xl font-bold mb-5">
         Friendship Analytics
       </h1>
 
-      {/* Chart Card */}
+      {/* Chart */}
       <div className="w-full h-[400px] bg-white rounded-xl p-5 shadow-md">
         <h3 className="mb-2.5 text-gray-600">
           By Interaction Type
@@ -41,7 +50,7 @@ const Stats = () => {
               label
             >
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index]} />
+                <Cell key={index} fill={COLORS[index]} />
               ))}
             </Pie>
 
