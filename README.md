@@ -1,16 +1,28 @@
-# React + Vite
+Project name: keen-Keeper
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Short Description: 
+Friendship Tracker is a React-based web app that allows users to keep track of their friends, monitor communication frequency, log interactions (call, text, video), view a timeline of activities, and analyze relationship data through visual charts.
 
-Currently, two official plugins are available:
+Technology used:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React.js – Frontend library for building user interfaces  
+- React Router – For routing between pages (Home, Timeline, Stats, Details)  
+- Context API – State management for storing interactions (call, text, video)  
+- Tailwind CSS / DaisyUI – Styling and responsive design  
+- Recharts – Data visualization (Pie Chart for analytics)  
+- React Toastify – Toast notifications for user actions  
+- JavaScript (ES6+) – Core programming language  
+- HTML5 & CSS3 – Structure and styling  
+- JSON – Static data for friend profiles  
+- Vite – Fast development and build tool
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Key Features
+1. Interaction Tracking System  
+Users can log Call, Text, and Video interactions for each friend, helping them maintain consistent communication and avoid losing touch.
 
-## Expanding the ESLint configuration
+2. Timeline History View  
+All interactions are recorded and displayed in a timeline with date, type (icon), and title, allowing users to easily track their communication history.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. Friendship Analytics Dashboard  
+A dynamic Pie Chart (using Recharts) visualizes the count of Call, Text, and Video interactions, giving users insights into their communication patterns.
