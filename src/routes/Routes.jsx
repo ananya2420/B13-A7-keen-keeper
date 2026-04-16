@@ -5,6 +5,7 @@ import ErrorPage from "../pages/error/ErrorPage";
 import HomePage from "../components/homepage/HomePage";
 import Keepers from "../pages/keepers/Keepers";
 import KeeperDetails from "../pages/keeperDetails/KeeperDetails";
+import Timeline from "../pages/timeline/Timeline";
 
 
 
@@ -28,6 +29,10 @@ export const router=createBrowserRouter([
       path:"/keeperDetails/:keeperId",
       Component: KeeperDetails,
       loader: ()=>fetch("/friendsData.json")
+    },
+    {
+      path:"/timeline",
+      element:<Timeline />
     }
   ],
   errorElement:<ErrorPage />

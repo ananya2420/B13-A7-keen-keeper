@@ -34,7 +34,7 @@ const KeeperDetails = () => {
     next_due_date,
   } = expectedKeeper;
 
-  const {handleMarkAsCall,storedKeeper} = useContext(keeperContext);
+  const {handleMarkAsCall,handleMarkAsText,handleMarkAsVideo} = useContext(keeperContext);
 //console.log(handleMarkAsCall, storedKeeper, "keeperContext");
 
   
@@ -178,12 +178,16 @@ const KeeperDetails = () => {
                 <span className="text-xs">Call</span>
               </button>
 
-              <button className="btn">
+              <button className="btn" 
+              onClick={()=>handleMarkAsText(expectedKeeper)}
+              >
                 <img src={text} alt="" />
                 <span className="text-xs">Text</span>
               </button>
 
-              <button className="btn">
+              <button className="btn"
+              onClick={()=>handleMarkAsVideo(expectedKeeper)}
+              >
                 <img src={video} alt="" />
                 <span className="text-xs">Video</span>
               </button>

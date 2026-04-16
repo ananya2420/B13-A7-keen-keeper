@@ -1,12 +1,12 @@
-import React from "react";
-
 
 import vector from "../../../assets/Vector.png";
 import clock from "../../../assets/Clock.png";
 import chartline from "../../../assets/ChartLine.png";
 import { Link } from "react-router";
 
+
 const Navbar = () => {
+
   return (
     <div className="navbar bg-base-100 shadow-md px-6">
 

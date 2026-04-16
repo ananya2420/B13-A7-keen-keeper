@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
-import { keeperContext } from '../../context/keeperContext';
+//import React, { useContext } from 'react'
+//import { keeperContext } from '../../context/keeperContext';
 
 const Keepers = () => {
 
-  const {storedKeeper} = useContext(keeperContext);
-  console.log(storedKeeper, "keeperContext");
+  //const {storedKeeper} = useContext(keeperContext);
+  //console.log(storedKeeper, "keeperContext");
 
   return (
     <div>

@@ -4,7 +4,7 @@ import './index.css'
 import { RouterProvider } from 'react-router/dom'
 import { router } from './routes/Routes'
 import KeeperProvider from './context/keeperContext'
-
+  import { ToastContainer } from 'react-toastify';
 
 
 
@@ -13,6 +13,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
      <KeeperProvider>
        <RouterProvider router={router} />
+        <ToastContainer />
      </KeeperProvider>
        
    

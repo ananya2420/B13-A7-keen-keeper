@@ -1,36 +1,65 @@
 import { createContext, useState } from "react";
+import { toast } from "react-toastify";
 
-// keeperContext.jsx
+// Create Context
 export const keeperContext = createContext();
 
 const KeeperProvider = ({ children }) => {
-
+  // ✅ State
   const [storeKeeper, setStoreKeeper] = useState([]);
-  
-  
+  const [textList, setTextList] = useState([]);
+  const [videoEditing, setVideoEditing] = useState([]);
+
+  // ✅ CALL
   const handleMarkAsCall = (currentKeeper) => {
-      //step 1: store keeper id
-     //step 2: Where to store
-     //step 3: array or collection
-     //step 4: If the keeper is already exist  then show a alert or toast
-    const isExistKeeper = storeKeeper.find(
-      (keeper) => keeper.id === currentKeeper.id,
+    const exists = storeKeeper.find(
+      (keeper) => keeper.id === currentKeeper.id
     );
-  
-    if (isExistKeeper) {
-      alert("The book is already exist");
+
+    if (exists) {
+      toast.error("Already in call list");
     } else {
       setStoreKeeper([...storeKeeper, currentKeeper]);
-      alert(`${currentKeeper.name} is added to list`)
+      toast.success(`${currentKeeper.name} added to call list`);
     }
-  
-    console.log(currentKeeper, storeKeeper, "keeper");
   };
 
+  // ✅ TEXT
+  const handleMarkAsText = (currentKeeper) => {
+    const exists = textList.find(
+      (keeper) => keeper.id === currentKeeper.id
+    );
+
+    if (exists) {
+      toast.error("Already in text list");
+    } else {
+      setTextList([...textList, currentKeeper]);
+      toast.success(`${currentKeeper.name} added to text list`);
+    }
+  };
+
+  // ✅ VIDEO
+  const handleMarkAsVideo = (currentKeeper) => {
+    const exists = videoEditing.find(
+      (keeper) => keeper.id === currentKeeper.id
+    );
+
+    if (exists) {
+      toast.error("Already in video list");
+    } else {
+      setVideoEditing([...videoEditing, currentKeeper]);
+      toast.success(`${currentKeeper.name} added to video list`);
+    }
+  };
+
+  // ✅ Context Data
   const data = {
     storeKeeper,
-    setStoreKeeper,
-    handleMarkAsCall
+    textList,
+    videoEditing,
+    handleMarkAsCall,
+    handleMarkAsText,
+    handleMarkAsVideo,
   };
 
   return (
