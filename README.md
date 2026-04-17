@@ -26,3 +26,7 @@ All interactions are recorded and displayed in a timeline with date, type (icon)
 
 3. Friendship Analytics Dashboard  
 A dynamic Pie Chart (using Recharts) visualizes the count of Call, Text, and Video interactions, giving users insights into their communication patterns.
+
+
+
+Live link: https://boisterous-elf-8af369.netlify.app/
